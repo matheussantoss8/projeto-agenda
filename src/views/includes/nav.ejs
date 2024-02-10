@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+    <a href="/" class="nav-link sticky-sm-top text-light px-3 fs-2 " id="agenda">AGENDA</a>
+
+    <a class="nav-link text-light p-1 rounded shadow-lg" href="/contato/index" id="contato">🙍🏻Cadastrar contato</a>
+
+    <% if(user) { %>
+
+      <a class="nav-link text-light p-1 rounded shadow-lg px-3" href="/login/logout" id="sair">Sair</a>
+
+      <% } else { %>
+
+        <a class=" nav-link text-light p-1 rounded shadow-lg px-3" id="conectar" href="/login/index">Conectar</a>
+
+        <% } %>
+  </div>
+</nav>

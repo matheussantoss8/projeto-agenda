@@ -4,6 +4,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.CONNECTIONSTRING)
+ /* {
+  useNewUrlParser:true,
+  useUnifiedTopology:true,
+  useFindAndModify:false
+} */
   .then(() => {
     app.emit('pronto');
   })
@@ -17,7 +22,7 @@ const routes = require('./routes');
 const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf')
-const { middlewareGlobal, checkCsrfErro, csrfMiddleware} = require('./src/middlewares/middleware');
+const { middlewareGlobal, checkCsrfErro, csrfMiddleware, checkCsrfError} = require('./src/middlewares/middleware');
 
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
@@ -43,7 +48,7 @@ app.set('view engine', 'ejs');
 app.use(csrf());
 // Nossos próprios middlewares
 app.use(middlewareGlobal);
-app.use(checkCsrfErro);
+app.use(checkCsrfError);
 app.use(csrfMiddleware);
 app.use(routes);
 
@@ -54,3 +59,4 @@ app.on('pronto', () => {
   });
 });
 
+app.use(express.static('public'));

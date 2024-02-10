@@ -1,0 +1,47 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav') %>
+
+        <div class="container ">
+            <div>
+
+                <div>
+                    <h1 class="text-light">Contato</h1>
+                    <p class="text-light">Crie ou edite seu contato abaixo</p>
+
+                    <%- include('includes/messages') %>
+
+                        <% if(contato._id) { %>
+                            <form action="/contato/edit/<%= contato._id %>" method="post">
+                                <% } else { %>
+                                    <form action="/contato/register" method="post">
+                                        <% } %>
+                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                            <div>
+                                                <label for="inome" class="form-label text-light">Nome</label>
+                                                <input value="<%= contato.nome %>" type="text" class="form-control"
+                                                    name="nome" id="inome">
+                                            </div>
+                                            <div>
+                                                <label for="isobrenome" class="form-label text-light">Sobrenome</label>
+                                                <input value="<%= contato.sobrenome %>" type="text" class="form-control"
+                                                    name="sobrenome" id="isobrenome">
+                                            </div>
+                                            <div>
+                                                <label for="iemail" class="form-label text-light">E-mail</label>
+                                                <input value="<%= contato.email %>" type="email" class="form-control"
+                                                    name="email" id="iemail">
+                                            </div>
+                                            <div>
+                                                <label for="itelefone" class="form-label text-light">Telefone</label>
+                                                <input value="<%= contato.telefone %>" type="tel" class="form-control"
+                                                    name="telefone" id="itelefone">
+                                            </div>
+                                            <button type="submit">Salvar</button>
+                                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+        <%- include('includes/footer') %>

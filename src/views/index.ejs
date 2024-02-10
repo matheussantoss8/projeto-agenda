@@ -1,12 +1,44 @@
-<%- include('includes/head'); %>
-    <section class="container">
-        <h1>Titulo</h1>
-        <form action="/" method="post">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <label for="icliente">cliente</label>
-            <input type="text" name="cliente" placeholder="digite seu nome" id="icliente">
-            <button>enviar</button>
-        </form>
-    </section>
+<%- include('includes/head') %>
+    <%- include('includes/nav') %>
 
-    <%- include('includes/footer') %>
+        <div class="container">
+            <div>
+                <div class="text-center m-5">
+                    <p class="text-light">Seus Contatos estão abaixo</p>
+
+                    <%- include('includes/messages') %>
+
+                        <% if(contatos.length> 0) {%>
+                            <div>
+                                <table>
+                                    <% contatos.forEach(contato=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= contato.nome %>
+                                            </td>
+                                            <td>
+                                                <%= contato.sobrenome %>
+                                            </td>
+                                            <td>
+                                                <%= contato.email %>
+                                            </td>
+                                            <td>
+                                                <%= contato.telefone %>
+                                            </td>
+                                            <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+                                            <td><a href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+                                        </tr>
+                                        <% }); %>
+
+                                </table>
+                            </div>
+                            <% } else {%>
+                                <p class="text-light">Não contem contatos</p>
+                                <% } %>
+                </div>
+
+
+            </div>
+        </div>
+
+        <%- include('includes/footer') %>

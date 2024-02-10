@@ -1,0 +1,42 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav') %>
+
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="col">
+                <%- include('includes/messages'); %>
+                    <div class="col">
+                        <div class="">
+                            <h3 class="text-light text-center m-3">FAÇA SEU CADASTRO</h3>
+                            <form class="form-cadastro " action="/login/register" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <div>
+                                    <label for="isuario" class="form-label text-light">Seu e-mail</label>
+                                    <input type="email" class="form-control" name="email" id="isuario">
+                                </div>
+                                <div>
+                                    <label for="isenha" class="form-label text-light">Senha</label>
+                                    <input type="password" class="form-control" name="password" id="isenha">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">Criar conta</button>
+                            </form>
+                        </div>
+
+                        <div class=" justify-content-between">
+                            <h3 class="text-light text-center m-3">LOGAR</h3>
+                            <form class="form-login" action="/login/login" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <div>
+                                    <label for="isuario" class="form-label text-light">Seu e-mail</label>
+                                    <input type="email" class="form-control" name="email" id="isuario">
+                                </div>
+                                <div>
+                                    <label for="isenha" class="form-label text-light">Senha</label>
+                                    <input type="password" class="form-control" name="password" id="isenha">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">Entrar</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <%- include('includes/footer') %>
