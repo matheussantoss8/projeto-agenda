@@ -4,40 +4,48 @@
         <div class="container">
             <div>
                 <div class="text-center m-5">
-                    <p class="text-light">Seus Contatos estão abaixo</p>
+                    <h3 class="text-light">SEUS CONTATOS ESTÃO ABAIXO</h3>
 
                     <%- include('includes/messages') %>
 
-                        <% if(contatos.length> 0) {%>
-                            <div>
-                                <table>
-                                    <% contatos.forEach(contato=> { %>
-                                        <tr>
-                                            <td>
-                                                <%= contato.nome %>
-                                            </td>
-                                            <td>
-                                                <%= contato.sobrenome %>
-                                            </td>
-                                            <td>
-                                                <%= contato.email %>
-                                            </td>
-                                            <td>
-                                                <%= contato.telefone %>
-                                            </td>
-                                            <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
-                                            <td><a href="/contato/delete/<%= contato._id %>">Excluir</a></td>
-                                        </tr>
-                                        <% }); %>
-
-                                </table>
+                        <% if(contatos.length> 0) { %>
+                            <div class="responsive-table">
+                                <div class="table-responsive">
+                                    <div style="overflow-x: auto;">
+                                        <table class="my-3">
+                                            <% contatos.forEach(contato=> { %>
+                                                <tr>
+                                                    <td class="text-light px-3">
+                                                        <%= contato.nome %>
+                                                    </td>
+                                                    <td class="text-light px-3">
+                                                        <%= contato.sobrenome %>
+                                                    </td>
+                                                    <td class="text-light px-3">
+                                                        <%= contato.email %>
+                                                    </td>
+                                                    <td class="text-light px-3">
+                                                        <%= contato.telefone %>
+                                                    </td>
+                                                    <td class="text-light px-3">
+                                                        <div class="d-flex">
+                                                            <buttom class="btn btn-primary"><a
+                                                                    href="/contato/index/<%= contato._id %>"
+                                                                    class="nav-link">Editar</a></buttom>
+                                                            <buttom class="btn btn-danger mx-3"><a href="/contato/delete/<%= contato._id %>"
+                                                                    class="nav-link">Excluir</a></buttom>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <% } else {%>
-                                <p class="text-light">Não contem contatos</p>
+                            <% } else { %>
+                                <p class="text-light">Não contém contatos</p>
                                 <% } %>
                 </div>
-
-
             </div>
         </div>
 

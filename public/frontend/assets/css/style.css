@@ -76,13 +76,14 @@ h3{
   text-shadow: 2px 2px 40px #000;
 }
 
-input[type=email], [type=password]{
+input[type=email], [type=password], [type=text], [type=tel]{
   background-color: #8700c5;
   border: none;
 }
 
-input[type=email]:focus, [type=password]:focus{
+input[type=email]:focus, [type=password]:focus, [type=text]:focus, [type=tel]:focus{
   background-color: #8700c5;
   color: #fff;
 }
+
 
